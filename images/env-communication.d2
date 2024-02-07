@@ -1,0 +1,16 @@
+shape: sequence_diagram
+
+client: MTA:SA Client
+server: MTA:SA Server
+gym: Gymnasium
+
+gym -> server.reset: reset
+server.reset -> client: stop episode
+client -> server.reset: episode stopped
+server.reset -> client: start episode
+client -> server.reset: episode started
+
+loop until terminated/truncated: {
+    client -> gym.step: observation
+    gym.step -> client: action
+}

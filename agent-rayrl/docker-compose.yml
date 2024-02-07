@@ -1,0 +1,35 @@
+version: "3"
+services:
+  agent:
+    build: .
+    ports:
+      - 8265:8265 # for ray dashboard
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    volumes:
+      - ./:/app
+      #- ./ray:/tmp/ray
+    #privileged: true
+    #ipc: host
+    #stop_signal: SIGKILL
+    hostname: agent
+    #network_mode: host
+    shm_size: 4G
+    command: python main.py
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  proxy:
+    build: .
+    ports:
+      - 8080:8080 # for ray environment server
+    hostname: proxy
+    volumes:
+      - ./:/app
+    command: uvicorn policy-server-proxy:app --host 0.0.0.0 --port 8080

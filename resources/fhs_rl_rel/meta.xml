@@ -1,0 +1,19 @@
+<meta>
+	<info author="" type="script" name="FHS Reinforcement Learning" showInResourceBrowser="true" version="0.0.1" />
+	<oop>true</oop>
+	<min_mta_version client="1.6.0-9.22173" server="1.6.0" />
+
+	<script src="utils/ooplib.lua" type="shared" />
+	<script src="utils/classlib.lua" type="shared" />
+
+	<script src="vehiclenodes.lua" type="server" />
+	<script src="MinHeap.lua" type="server" />
+	<script src="gps.lua" type="server" />
+
+	<!--script src="fps.lua" type="client"/-->
+	<script src="agent.lua" type="client"/>
+
+	<script src="server.lua" type="server"/>
+	<export function="resetEnvironment" http="true" />
+	<export function="stopEnvironment" http="true" />
+</meta>

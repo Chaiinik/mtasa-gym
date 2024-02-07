@@ -1,0 +1,12 @@
+version: "3"
+services:
+  server:
+    container_name: mtasa-server
+    image: mtasa-server
+    build: .
+    restart: always
+    volumes:
+      - ./mods:/mtasa/mods
+    stdin_open: true
+    tty: true
+

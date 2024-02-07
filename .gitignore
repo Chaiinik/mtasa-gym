@@ -1,0 +1,9 @@
+mtasa-server/mods
+__pycache__/
+logs/
+tensorboard*/
+last_checkpoint.out
+*.zip
+*.pkl
+install-files/
+meeting-notes/

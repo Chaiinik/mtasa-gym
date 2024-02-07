@@ -1,0 +1,23 @@
+FROM python:3.11
+#RUN yum install -y python3 python3-pip
+RUN pip install fastapi pydantic uvicorn
+#RUN pip install sbx-rl
+RUN pip install git+https://github.com/Chaiinik/sbx
+RUN pip install -U "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+RUN pip install requests
+RUN pip install tensorboard
+
+#WORKDIR /app/rtgym
+#ADD rtgym .
+#RUN pip install -e .
+
+WORKDIR /app
+ADD . .
+
+# Disable logging
+ENV PYTHONUNBUFFERED=1
+ENV UVICORN_LOG_LEVEL=error
+
+CMD ["uvicorn", "main-sbx-goal:app", "--host", "0.0.0.0", "--port", "8000"]
+#CMD python main.py
+
