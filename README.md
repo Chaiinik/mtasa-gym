@@ -252,6 +252,8 @@ The table below shows the results of the evaluation of the trained agent. The ag
 | Average steps | 735 +- 45 |
 | Average rewards | -173579.2 +- 17357 |
 
+https://github.com/Chaiinik/mtasa-gym/assets/8671179/5d3f0d98-344d-4af4-95af-5484af227ab3
+
 
 ## Limitations
 - The environments are not designed for multi-agent training or vectorized environments. Although the environment can be extended to run multiple agents, it is not implemented yet.
